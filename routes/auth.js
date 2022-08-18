@@ -14,6 +14,10 @@ router.get('/', requirelogin, async (req, res) =>{
     res.json({username:currUsername})
 })
 
+router.get("/test", (req, res) =>{
+    return res.send("hello bro")
+})
+
 router.post("/signup",async (req, res)=>{
     const {username, phone,  password} = req.body
 
