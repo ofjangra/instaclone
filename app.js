@@ -8,6 +8,13 @@ const cors = require('cors')
 
 dotenv.config({path: "./config.env"})
 
+const app = express()
+
+app.use(express.json())
+app.use(cors({
+    origin: "*"
+    }))
+
 
 const dbURI = process.env.DBURI
 
@@ -30,18 +37,13 @@ require('./models/users')
 require('./models/post')
 
 
-const port = process.env.PORT || 5000
-const app = express()
 
-app.use(express.json())
-app.use(cors({
-    origin: "*"
-    }))
+
     
 app.use(require('./routes/auth'))
 app.use(require('./routes/post'))
 
-
+const port = process.env.PORT || 5000
 
 app.listen(port,() =>{
     console.log("server started at port: ", port)
