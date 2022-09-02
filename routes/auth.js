@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 const User = mongoose.model('User')
+const Post = mongoose.model('Post')
 const jwt = require('jsonwebtoken')
 const requirelogin = require('../middleware/requirelogin')
 const jwtkey = process.env.JWTKEY
@@ -36,9 +37,13 @@ router.post("/signup",async (req, res)=>{
         }
         const passHash = await bcrypt.hash(password, 12)
         const user = new User({
-            username,
-            phone,
-            password:passHash
+            username: username.toLowerCase(),
+            phone:phone,
+            password:passHash,
+            name:"",
+            photo_url:"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
+            bio:"",
+            website:""
         })
         await user.save()
             return res.status(200).json({message: "registered successfully"})
@@ -58,27 +63,48 @@ router.post('/signin', async (req, res) =>{
     }
     try{
 
+
+
     const currUser = await User.findOne({username})
 
     if(!currUser){
-        return res.status(422).json({error:"Invalid credentials"})
+        return res.status(400).json({error:"Invalid credentials"})
     }
 
 
     const passMatch = await bcrypt.compare(password, currUser.password)
 
     if(!passMatch){
-        return res.status(422).json({error:"Invalid Credentials"})
+        return res.status(400).json({error:"Invalid Credentials"})
     }
 
     const token  = jwt.sign({_id:currUser._id},jwtkey)
     
-    return res.json({token:token})
+    return res.json({token:token, user: currUser.username})
 
 }
 catch(err){
     console.log(err)
 }
+})
+
+
+
+
+
+router.get("/users/:username", async (req, res) =>{
+    const username = req.params.username
+
+    const requestedUser = await User.findOne({username:username})
+
+    if(!requestedUser){
+        return res.status(404).json({error:"OOPS!!, User not found."})
+    }
+
+    const userPosts = await Post.find({publisher:username})
+
+
+    return res.status(200).json({userDetails:requestedUser, posts:userPosts})
 })
 
 

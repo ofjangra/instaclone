@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-
+const {ObjectId} = mongoose.Schema.Types
 const jwt = require('jsonwebtoken')
 
 
@@ -18,6 +18,10 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    name:String,
+    photo_url:String,
+    bio:String,
+    website:String
 })
 
 

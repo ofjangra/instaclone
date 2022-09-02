@@ -27,6 +27,7 @@ module.exports = async (req, res, next) =>{
         req.rootUser = rootUser
         req.rootUsername = rootUser.username
         req.userId =  rootUser._id
+
        
         next()
     } catch(err){
