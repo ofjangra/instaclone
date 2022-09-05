@@ -17,7 +17,7 @@ router.get('/allpost', requirelogin, async (req, res) =>{
 
     try{
         const posts =  await Post.find().populate("postedBy", "_id photo_url username")
-       return  res.json({posts:posts, viewer: req.rootUser.username})
+       return  res.json({posts:posts, viewer: {username:req.rootUser.username, id: req.rootUser._id}})
     }
     catch(err){
         console.log(err)
@@ -32,15 +32,52 @@ router.delete("/deletepost/:post_id",requirelogin, async (req, res) =>{
 
 })
 
-router.get("/posts/:username", async (req, res) =>{
-    const username = req.params.username
-    try{
-    const posts = await Post.find({postedBy:username}).populate("postedBy", "_id username")
-    return res.json(posts)
+router.put('/posts/like/:post_id', requirelogin, async (req, res) =>{
+    const post_id = req.params.post_id
+
+    Post.findByIdAndUpdate(post_id, {$push:{likes:req.rootUser._id}}, {new:true}).exec((err)=>{
+        if(err){
+            return
+        }
+    })
+    return
+})
+
+
+
+router.put('/posts/unlike/:post_id', requirelogin, async (req, res) =>{
+    const post_id = req.params.post_id
+
+    Post.findByIdAndUpdate(post_id, {$pull:{likes:req.rootUser._id}}, {new:true}).exec((err)=>{
+        if(err){
+            return
+        }
+    })
+})
+
+router.put("/posts/comment", requirelogin, async(req, res) =>{
+    const {comment, post_id} = req.body
+    Post.findByIdAndUpdate(post_id, {$push:{comments:{text:comment, postedBy:req.rootUser._id}}}, {new:true}).exec((err) => {
+        if(err) {
+            console.log(err)
+            return 
+        }
+    })
+    return res.status(201).json({message:"Comment Posted Successfully"})
+})
+
+
+router.get('/posts/likes/:post_id', async (req, res) =>{
+    const post_id = req.params.post_id
+
+    const result = await Post.findById(post_id).populate("likes", '_id username photo_url')
+
+    const likes = result.likes
+
+    if(!result){
+        return res.status(404).json({error:"post not found"})
     }
-    catch(err){
-        console.log(err)
-    }
+    return res.send(likes)
 })
 
 router.post("/createpost",requirelogin, async (req, res) =>{
