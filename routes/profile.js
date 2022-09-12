@@ -7,6 +7,8 @@ const Post = mongoose.model('Post')
 
 const requirelogin = require("../middleware/requirelogin")
 
+const validateuser = require("../middleware/validateuser")
+
 const router = express.Router()
 
 
@@ -22,10 +24,7 @@ router.get('/profile', requirelogin, async (req, res) =>{
         return res.status(404).json({error:"OOPS!!, User not found."})
     }
 
-    const userPosts = await Post.find({postedBy:userId})
-
-
-    return res.status(200).json({userDetails:requestedUser, posts:userPosts})
+    return res.status(200).json({user:requestedUser.username})
 
     } catch(err){
         return res.status(400).json({error:"There was an error"})
@@ -33,6 +32,41 @@ router.get('/profile', requirelogin, async (req, res) =>{
 })
 
 
+router.get("/users/:username", validateuser,  async(req, res) =>{
+    try{
+    const username = req.params.username
+
+    const requestedUser = await User.findOne({username:username}).select("-password")
+
+    if(!requestedUser){
+        return res.status(404).json({error:"OOPS!! User Not Found"})
+    }
+
+    
+    const posts = await Post.find({postedBy:requestedUser._id})
+
+    return res.status(200).json({user_props:req.userProps, userDetails:requestedUser, posts:posts})
+} catch (err){
+    return res.status(422).json({error:"Something went wrong"})
+}
+})
+
+router.get('/getprofile', requirelogin, async (req, res) =>{
+    try{
+        const user_id = req.rootUser._id
+
+        const user = await User.findById(user_id).select("-password")
+
+        if(!user){
+            return res.status(404).json({error:"Oops!! Something went wrong"})
+        }
+
+        return res.status(200).json({userDetails:user})
+
+    } catch(err){
+        return res.status(501).json({error:"Something went wrong"})
+    }
+})
 
 router.put("/editprofile", requirelogin, async (req, res) =>{
     try{
@@ -40,10 +74,11 @@ router.put("/editprofile", requirelogin, async (req, res) =>{
 
     let errors = {}
 
-    let query = {}
+    const query = {}
 
-    const filter = {_id:req.rootUser._id}
+    const find_filter = {username:req.rootUsername}
 
+    // console.log(filter)
 
 
     
@@ -68,7 +103,6 @@ router.put("/editprofile", requirelogin, async (req, res) =>{
 
     if(name !== req.rootUser.name){
         query.name = name
-        console.log(query)
     }
 
 
@@ -83,15 +117,13 @@ router.put("/editprofile", requirelogin, async (req, res) =>{
         return res.status(422).json({error:errors})
     }
 
-    if(!query.username || !query.phone || !query.name || !query.bio || !query.website){
-        return res.status(422).json({error:""})
+    if(!query.username && !query.phone && !query.name && !query.bio && !query.website){
+        return
     }
 
-     User.updateOne(filter, {$set: query},{new:true}).exec((err) =>{
-        if (err){
-            return res.status(400).json({error:err})
-        }
-    })
+     await User.updateOne(find_filter, {$set: query},{new:true})
+
+
 
     return res.status(201).json({message:"Profile Edited Successfully"})
 } catch(err){
