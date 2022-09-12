@@ -57,7 +57,9 @@ router.put('/posts/unlike/:post_id', requirelogin, async (req, res) =>{
 
 router.put("/posts/comment", requirelogin, async(req, res) =>{
     const {comment, post_id} = req.body
-    Post.findByIdAndUpdate(post_id, {$push:{comments:{text:comment, postedBy:req.rootUser._id}}}, {new:true}).exec((err) => {
+    const commenter = await User.findById(req.userId)
+    const commentedBy = commenter.username
+    Post.findByIdAndUpdate(post_id, {$push:{comments:{text:comment, postedBy:req.rootUser._id, commentedBy:commentedBy}}}, {new:true}).exec((err) => {
         if(err) {
             console.log(err)
             return 

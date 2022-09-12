@@ -22,6 +22,7 @@ const postSchema = new mongoose.Schema({
         type: ObjectId,
         ref: "User",
       },
+      commentedBy:String
     },
   ],
 });
