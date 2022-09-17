@@ -15,9 +15,6 @@ router.get('/', requirelogin, async (req, res) =>{
     res.json({username:currUsername})
 })
 
-router.get("/test", (req, res) =>{
-    return res.send("hello bro")
-})
 
 router.post("/signup",async (req, res)=>{
     const {username, phone,  password} = req.body
@@ -89,23 +86,6 @@ catch(err){
 })
 
 
-
-
-
-// router.get("/users/:username", async (req, res) =>{
-//     const username = req.params.username
-
-//     const requestedUser = await User.findOne({username:username})
-
-//     if(!requestedUser){
-//         return res.status(404).json({error:"OOPS!!, User not found."})
-//     }
-
-//     const userPosts = await Post.find({publisher:username})
-
-
-//     return res.status(200).json({userDetails:requestedUser, posts:userPosts})
-// })
 
 
 

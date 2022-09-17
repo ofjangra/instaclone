@@ -43,6 +43,7 @@ require('./models/post')
 app.use(require('./routes/auth'))
 app.use(require('./routes/post'))
 app.use(require('./routes/profile'))
+app.use(require("./routes/follows"))
 
 const port = process.env.PORT || 5000
 

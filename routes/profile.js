@@ -43,7 +43,7 @@ router.get("/users/:username", validateuser,  async(req, res) =>{
     }
 
     
-    const posts = await Post.find({postedBy:requestedUser._id})
+    const posts = await Post.find({postedBy:requestedUser._id}).sort("-createdAt")
 
     return res.status(200).json({user_props:req.userProps, userDetails:requestedUser, posts:posts})
 } catch (err){
@@ -78,7 +78,6 @@ router.put("/editprofile", requirelogin, async (req, res) =>{
 
     const find_filter = {username:req.rootUsername}
 
-    // console.log(filter)
 
 
     
@@ -147,5 +146,8 @@ router.put('/editprofile/photo', requirelogin, (req, res) =>{
         }
     })
 })
+
+
+
 
 module.exports = router

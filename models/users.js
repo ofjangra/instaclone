@@ -1,9 +1,6 @@
 const mongoose = require('mongoose')
 const {ObjectId} = mongoose.Schema.Types
-const jwt = require('jsonwebtoken')
 
-
-const JWTKEY = process.env.JWTKEY
 
 const userSchema = new mongoose.Schema({
     username:{
@@ -21,7 +18,19 @@ const userSchema = new mongoose.Schema({
     name:String,
     photo_url:String,
     bio:String,
-    website:String
+    website:String,
+    followers:[
+        {
+            type:ObjectId,
+            ref:"User"
+        }
+    ],
+    followings:[
+        {
+            type:ObjectId,
+            ref:"User"
+        }
+    ]
 })
 
 

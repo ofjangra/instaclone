@@ -13,13 +13,15 @@ const User = mongoose.model("User")
 
 
 
-router.get('/allpost', requirelogin, async (req, res) =>{
 
+router.get("/homefeed", requirelogin, async (req, res) =>{
     try{
-        const posts =  await Post.find().populate("postedBy", "_id photo_url username")
-       return  res.json({posts:posts, viewer: {username:req.rootUser.username, id: req.rootUser._id}})
-    }
-    catch(err){
+    const posts = await Post.find({postedBy:{$in:req.rootUser.followings}})
+    .populate('postedBy', "_id photo_url username")
+    .sort("-createdAt")
+
+    return  res.json({posts:posts, viewer: {username:req.rootUser.username, id: req.rootUser._id}})
+    } catch(err){
         console.log(err)
     }
 })
