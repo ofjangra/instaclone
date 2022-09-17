@@ -25,6 +25,6 @@ const postSchema = new mongoose.Schema({
       commentedBy:String
     },
   ],
-});
+},{timestamps:true});
 
 mongoose.model("Post", postSchema);
