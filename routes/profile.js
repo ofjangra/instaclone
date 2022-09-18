@@ -122,9 +122,11 @@ router.put("/editprofile", requirelogin, async (req, res) =>{
 
      await User.updateOne(find_filter, {$set: query},{new:true})
 
+     const updatedUsername =  await User.findById(req.userId).select("username")
 
 
-    return res.status(201).json({message:"Profile Edited Successfully"})
+
+    return res.status(201).json({message:"Profile Edited Successfully", username:updatedUsername})
 } catch(err){
     console.log(err)
     return res.json({error:err})
