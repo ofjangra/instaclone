@@ -6,6 +6,8 @@ const Post = mongoose.model("Post")
 
 const requirelogin = require('../middleware/requirelogin')
 
+const validateuser = require('../middleware/validateuser')
+
 const router = express.Router()
 
 const User = mongoose.model("User")
@@ -26,6 +28,26 @@ router.get("/homefeed", requirelogin, async (req, res) =>{
     }
 })
 
+
+router.get("/post/:post_id", validateuser, async (req, res) =>{
+    try{
+        const post_id = req.params.post_id
+
+        console.log(post_id)
+
+        const post = await Post.findOne({_id:post_id}).populate("postedBy", "_id username photo_url")
+
+        console.log(post)
+
+        if(!post){
+            return res.status(404).json({error:"post not found"})
+        }
+
+        return res.status(200).json({user_props:req.userProps, post:post})
+    } catch(err){
+        return res.status(501).json(err)
+    }
+})
 
 router.delete("/deletepost/:post_id",requirelogin, async (req, res) =>{
     const post_id = req.params.post_id
