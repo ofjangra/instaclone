@@ -14,7 +14,7 @@ const router = express.Router()
 
 
 
-router.get('/profile', requirelogin, async (req, res) =>{
+router.get('/currprofile', requirelogin, async (req, res) =>{
     const userId = req.userId
 
     try{

@@ -52,8 +52,10 @@ router.post("/signup",async (req, res)=>{
 })
 
 
-router.post('/signin', async (req, res) =>{
+router.post('/user_signin', async (req, res) =>{
     const {username, password} = req.body
+
+    console.log(username, password)
 
     if(!username || !password){
         return res.status(422).json({error:"please provide credentials"})
