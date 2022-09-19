@@ -120,7 +120,8 @@ router.post("/createpost",requirelogin, async (req, res) =>{
     })
     post.save()
     .then((result)=>{
-        return res.json({post:result, message:"Post saved successfully"})
+        console.log(result)
+        return res.json({post:result._id, message:"Post saved successfully"})
     })
     .catch((err)=>{
         console.log(err)
