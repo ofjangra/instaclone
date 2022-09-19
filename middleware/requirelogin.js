@@ -11,7 +11,7 @@ module.exports = async (req, res, next) =>{
         const {authorization} = req.headers
         
         if(!authorization){
-        	return res.status(401).json({error:"you must be logged in"})
+        	return res.redirect("/accounts/signin")
         }
         
         const token = authorization.replace("Bearer ","")

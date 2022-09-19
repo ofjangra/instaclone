@@ -11,7 +11,7 @@ const validateuser = require("../middleware/validateuser")
 
 const router = express.Router()
 
-
+ 
 
 
 router.get('/currprofile', requirelogin, async (req, res) =>{
