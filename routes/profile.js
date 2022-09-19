@@ -68,6 +68,20 @@ router.get('/getprofile', requirelogin, async (req, res) =>{
     }
 })
 
+router.get('/suggestions', requirelogin, async (req, res) =>{
+    try{
+        
+    const users = await User.find().select("_id username photo_url")
+
+    const suggestions = users.filter((val) =>{
+        return val.username !== req.rootUsername
+    })
+    return res.status(200).json(suggestions)
+    } catch(err){
+        return res.status(500).json({error:"something went wrong"})
+    }
+})
+
 router.put("/editprofile", requirelogin, async (req, res) =>{
     try{
     const {username, phone, name, bio, website} = req.body
