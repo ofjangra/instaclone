@@ -24,7 +24,7 @@ router.get("/homefeed", requirelogin, async (req, res) =>{
 
     return  res.json({posts:posts, viewer: {username:req.rootUser.username, id: req.rootUser._id}})
     } catch(err){
-        console.log(err)
+        
     }
 })
 
@@ -33,11 +33,9 @@ router.get("/post/:post_id", validateuser, async (req, res) =>{
     try{
         const post_id = req.params.post_id
 
-        console.log(post_id)
 
         const post = await Post.findOne({_id:post_id}).populate("postedBy", "_id username photo_url")
 
-        console.log(post)
 
         if(!post){
             return res.status(404).json({error:"post not found"})
@@ -85,7 +83,7 @@ router.put("/posts/comment", requirelogin, async(req, res) =>{
     const commentedBy = commenter.username
     Post.findByIdAndUpdate(post_id, {$push:{comments:{text:comment, postedBy:req.rootUser._id, commentedBy:commentedBy}}}, {new:true}).exec((err) => {
         if(err) {
-            console.log(err)
+        
             return 
         }
     })
@@ -120,11 +118,10 @@ router.post("/createpost",requirelogin, async (req, res) =>{
     })
     post.save()
     .then((result)=>{
-        console.log(result)
         return res.json({post:result._id, message:"Post saved successfully"})
     })
     .catch((err)=>{
-        console.log(err)
+    
     })
 })
 

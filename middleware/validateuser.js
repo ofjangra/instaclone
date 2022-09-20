@@ -13,7 +13,6 @@ module.exports = async (req, res, next) =>{
         viewerID:""
     }
     if(!authorization){
-        console.log("no auth")
         req.userProps = userProps
         return next()
     }
@@ -25,14 +24,12 @@ module.exports = async (req, res, next) =>{
     const rootUser = await User.findById(verifiedToken._id)
 
     if(!rootUser){
-        console.log("user not found")
         return res.status(422).json({error:"something went wrong"})
     }
 
     userProps.loggedIn = true
     userProps.viewerID = rootUser._id
     req.userProps = userProps
-    console.log(userProps)
    return next()
 }
 

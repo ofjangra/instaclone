@@ -108,7 +108,6 @@ router.put("/editprofile", requirelogin, async (req, res) =>{
         const phoneUsed = await User.findOne({phone:phone})
         if(phoneUsed){
             errors.phone = "Phone number already in use"
-            console.log(errors)
         }
         query.phone = phone
     } 
@@ -142,7 +141,7 @@ router.put("/editprofile", requirelogin, async (req, res) =>{
 
     return res.status(201).json({message:"Profile Edited Successfully", username:updatedUsername})
 } catch(err){
-    console.log(err)
+
     return res.json({error:err})
 }
 })
