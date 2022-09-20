@@ -1,1 +1,937 @@
-@font-face{font-family:muliRegular;src:url(/font/Muli-Regular.ttf)}*{padding:0;margin:0;box-sizing:border-box;font-family:muliRegular}.link,.link:active{text-decoration:none;color:#000}.loginMain{height:80vh;min-height:590px;width:100%;display:flex;align-items:center;justify-content:center}.card{height:auto;width:auto;display:flex;flex-direction:column;align-items:center;justify-content:space-between}.card form{height:auto;width:100%;padding:16px;display:flex;flex-direction:column;align-items:center;justify-content:space-around}.card h3{font-size:32px;font-weight:lighter;font-family:grandHotel}.inputField{height:auto;width:320px;display:flex;flex-direction:column;align-items:center;justify-content:space-around;margin-bottom:20px}.inputField input{border:1px solid gray;background:none;padding:5px;height:40px;width:100%}.inputField:focus{outline:0}.inputField p{align-self:flex-start;color:#b22222}form button{height:36px;width:120px;background-color:#0387f3;color:#fff;font-size:16px;border:none;border-radius:4px;cursor:pointer;margin-bottom:12px}.profileContainer{height:auto;width:100%;display:flex;justify-content:center}.profileMain{height:auto;width:70%;display:flex;flex-direction:column;align-items:center;justify-content:space-around}.profileInfo{height:auto;width:100%;display:flex;align-items:center;justify-content:space-between;padding:40px 0;border-bottom:1px solid rgb(153,153,153)}.profilePhoto{flex-basis:30%;height:100%;display:flex;align-items:center;justify-content:center}.profilePhoto div{height:160px;width:160px;display:flex;align-items:center;justify-content:center}.profilePhoto div img{height:100%;width:100%;border-radius:50%;object-fit:cover}.profileDetails{flex-basis:60%;height:100%;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-around}.profileEdit{height:auto;padding:4px 0;width:60%;display:flex;align-items:center;justify-content:space-between}.profileEdit h5{font-size:24px}.profileEdit button{height:36px;width:90px;background:none;border:1px solid gray;border-radius:4px;cursor:pointer;font-weight:700;font-size:14px}.profileEdit span{font-size:24px;cursor:pointer}.entityCounts{height:auto;width:60%;display:flex;align-items:center;justify-content:space-between;font-size:16px;padding:8px 0}.bio{height:auto;width:60%;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-around;margin-top:10px;padding:4px 0}.bio .name{font-size:18px}.bio *{margin-bottom:10px}.gallery{height:auto;width:auto;display:grid;grid-template-columns:auto auto auto;grid-template-rows:auto;row-gap:25px;column-gap:25px;margin-top:30px;margin-bottom:80px}.postPhoto{height:280px;width:100%;display:flex;align-items:center;justify-content:center}.postPhoto img{height:280px;width:280px;object-fit:cover}@media screen and (max-width:1060px){.profileMain{width:80%}.profileEdit,.entityCounts{width:70%}}@media screen and (max-width:930px){.profileMain{width:90%}.profileEdit,.entityCounts{width:80%}.gallery{padding-top:32px;column-gap:20px;row-gap:25px}.postPhoto{width:100%;height:200px}.postPhoto img{width:240px;height:240px}}@media screen and (max-width:800px){.profileEdit,.entityCounts{width:90%}.gallery{padding-top:32px;column-gap:18px;row-gap:25px}.postPhoto{width:100%;height:200px}.postPhoto img{width:200px;height:200px}}@media screen and (max-width:660px){.profileMain{width:100%;padding:10px}.profileInfo{flex-direction:column;width:90%}.profilePhoto{flex-basis:30%;height:auto;display:flex;align-items:center;justify-content:center}.profilePhoto div{height:120px;width:120px;display:flex;align-items:center;justify-content:center}.profileDetails{margin-top:32px;flex-basis:60%;width:100%;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-around}.profileEdit{height:auto;padding:4px 0;width:auto;display:flex;align-items:center;justify-content:space-between}.profileEdit h5{font-size:24px}.profileEdit button{margin-left:52px}.entityCounts{margin-top:20px;width:60%}.gallery{width:100%;display:flex;flex-direction:column}.postPhoto{width:100%;height:auto}.postPhoto img{width:90%;height:auto}}.home{height:auto;width:100%;display:flex;align-items:center;justify-content:space-around;padding-top:40px}.homePosts{height:100%;width:70%;display:flex;flex-direction:column;align-items:center}.homePost{height:auto;width:420px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;border:1px solid rgb(189,189,189);border-radius:8px;margin-bottom:40px;background-color:#fff}.publisherDetails{height:auto;width:100%;display:flex;align-items:center;padding:10px 0 10px 20px;border-bottom:1px solid rgb(189,189,189);position:relative}.publisherDetails img{height:30px;width:30px;border-radius:15px;align-self:center;justify-self:flex-start}.publisherDetails strong{margin-left:20px}#deleteIcon{position:absolute;top:50%;right:20px;transform:translate(-50%,-50%);cursor:pointer;opacity:60%}.postImg{height:auto;width:100%;display:flex;align-items:center;justify-content:center}.postImg img{height:100%;width:100%;object-fit:contain;border-bottom:1px solid rgb(189,189,189)}.postActions{padding:10px 0 10px 20px;display:flex;align-items:center}.likesCount{padding:5px 0 5px 20px}.postDetails{height:auto;width:100%;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-around;padding:5px 0 5px 20px}.postBody{display:flex}.postBody strong{margin-right:10px}.allComments{height:auto;margin-right:20px;max-height:140px;width:100%;overflow:scroll}.allComments::-webkit-scrollbar{width:0px}.makeComment{height:auto;width:100%;display:flex;align-items:center;justify-content:space-between;padding-right:20px}.makeComment input{margin-top:15px;border:none;background:none;border-bottom:1px solid #000000;padding:6px;width:100%}.makeComment input:focus{outline:0}.makeComment button{border:none;background:none;color:#00a5ff;cursor:pointer}body{background-color:#f8f8f8}.createPostContainer{height:100vh;min-height:590px;width:100%;display:flex;align-items:center;justify-content:space-around;background-color:#000000c5;position:fixed;top:0;left:0;right:0;bottom:0;z-index:20}#closeModal{position:absolute;top:40px;right:40px;color:#fff;font-size:32px;height:36px;width:36px;cursor:pointer}.createPost{height:70%;width:60%;display:flex;flex-direction:column;align-items:center;justify-content:space-between}.postSelect{height:100%;width:50%;min-width:320px;display:flex;flex-direction:column;align-items:center;justify-content:space-around;border:1px solid rgb(189,189,189);border-radius:10px;position:relative;background-color:#ebebeb}.postSelect .createPostTitle{position:absolute;height:auto;width:100%;top:0;left:0;text-align:center;font-size:24px;padding:8px;background-color:#00a5ff;color:#fff;border-top-left-radius:10px;border-top-right-radius:10px}#discardCreatePost{position:absolute;top:50%;left:10%;transform:translate(-50%,-50%);cursor:pointer}.postSelect img{margin-top:80px;height:120px;width:auto}.postSelect input{display:none}.postSelect button{height:36px;width:180px;background-color:#0387f3;border-radius:4px;color:#fff;border:none;font-size:14px;font-weight:700;cursor:pointer}.postForm{height:75%;max-height:480px;width:60%;display:flex;flex-direction:column;align-items:center;justify-content:space-between;border:1px solid rgb(189,189,189);border-radius:10px;background-color:#ebebeb}.postFormTitle{width:100%;height:10%;display:flex;align-items:center;justify-content:center;background-color:#00a5ff;border-top-left-radius:10px;border-top-right-radius:10px;font-size:24px;color:#fff;position:relative}.postFormDetails{height:90%;width:100%;display:flex;align-items:center;justify-content:space-between}.photoPreview{height:100%;flex-basis:50%;display:flex;align-items:center;justify-content:center;padding:8px;background-color:#303030}.photoPreview img{height:100%;width:100%;object-fit:contain}.postCaption{flex-basis:45%;margin-right:20px;height:100%;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-around;font-size:24px}.postCaption input{height:36px;width:100%;border:none;border-bottom:1px solid gray;padding:10px;background:none}.postCaption input:focus{outline:none}.postCaption button{height:32px;width:90px;border:none;background-color:#0387f3;color:#fff;font-size:14px;font-weight:700;border-radius:4px;cursor:pointer}@media screen and (max-width:720px){.postFormDetails{flex-direction:column}}@font-face{font-family:grandHotel;src:url(/font/Grand_Hotel/GrandHotel-Regular.ttf)}.user_navbar{height:50px;width:100%;display:flex;align-items:center;justify-content:space-between;padding:0 32px;background-color:#fff;border-bottom:1px solid rgb(194,193,193);position:sticky;top:0;left:0;right:0;z-index:10}.logo{height:100%;width:auto;display:flex;align-items:center;justify-content:center}.logo h1{font-size:32px;font-family:grandHotel;font-weight:lighter}.links{height:100%;width:30%;display:flex;align-items:center;justify-content:space-around}.preloadContainer{height:auto;width:auto;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}.spinner{border-left:3px solid rgb(20,20,20);border-bottom:2px solid rgb(20,20,20);display:flex;align-items:center;justify-content:center;animation:rotate 2s infinite}@keyframes rotate{0%{transform:rotate(0)}to{transform:rotate(360deg)}}.editProfile_wrapper{height:auto;width:100%;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-around;padding:32px 10% 10%}.editProfile_wrapper h3{font-size:24px}.editProfile{height:auto;width:100%;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-around;margin-top:32px}.editField{height:auto;width:100%;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-around;background-color:#fff;padding:20px;border-radius:4px;margin-bottom:20px}.editField label{font-size:18px;font-weight:700;opacity:80%}.image_editField{height:auto;width:100%;display:flex;flex-direction:row;align-items:center;justify-content:flex-start;margin-top:20px}.image_editField .profile_Photo{height:180px;width:180px;display:flex;align-items:center;justify-content:flex-start}.image_editField img{height:140px;width:140px;object-fit:cover;border-radius:70px}.editProfile button{border:none;background-color:#0387f3;padding:8px 20px;font-weight:700;color:#fff;border-radius:4px;cursor:pointer}.text_editField{height:auto;width:100%;margin-top:20px}.text_editField input{height:auto;width:320px;padding:8px;background:none;border:1px solid gray;border-radius:4px;font-size:16px}.text_editField textarea{height:80px;width:320px;padding:8px;background:none;border-radius:4px}
+@font-face {
+    font-family: muliRegular;
+    src: url(/font/Muli-Regular.ttf)
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: muliRegular
+}
+
+.link,
+.link:active {
+    text-decoration: none;
+    color: #000
+}
+
+.loginMain {
+    height: 80vh;
+    min-height: 590px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.card {
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between
+}
+
+.card form {
+    height: auto;
+    width: 100%;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around
+}
+
+.card h3 {
+    font-size: 32px;
+    font-weight: lighter;
+    font-family: grandHotel
+}
+
+.inputField {
+    height: auto;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 20px
+}
+
+.inputField input {
+    border: 1px solid gray;
+    background: none;
+    padding: 5px;
+    height: 40px;
+    width: 100%
+}
+
+.inputField:focus {
+    outline: 0
+}
+
+.inputField p {
+    align-self: flex-start;
+    color: #b22222
+}
+
+form button {
+    height: 36px;
+    width: 120px;
+    background-color: #0387f3;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 12px
+}
+
+.profileContainer {
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center
+}
+
+.profileMain {
+    height: auto;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around
+}
+
+.profileInfo {
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 0;
+    border-bottom: 1px solid rgb(153, 153, 153)
+}
+
+.profilePhoto {
+    flex-basis: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.profilePhoto div {
+    height: 160px;
+    width: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.profilePhoto div img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover
+}
+
+.profileDetails {
+    flex-basis: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around
+}
+
+.profileEdit {
+    height: auto;
+    padding: 4px 0;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.profileEdit h5 {
+    font-size: 24px
+}
+
+.profileEdit button {
+    height: 36px;
+    width: 90px;
+    background: none;
+    border: 1px solid gray;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px
+}
+
+.profileEdit span {
+    font-size: 24px;
+    cursor: pointer
+}
+
+.entityCounts {
+    height: auto;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    padding: 8px 0
+}
+
+.bio {
+    height: auto;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin-top: 10px;
+    padding: 4px 0
+}
+
+.bio .name {
+    font-size: 18px
+}
+
+.bio * {
+    margin-bottom: 10px
+}
+
+.gallery {
+    height: auto;
+    width: auto;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto;
+    row-gap: 25px;
+    column-gap: 25px;
+    margin-top: 30px;
+    margin-bottom: 80px
+}
+
+.postPhoto {
+    height: 280px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.postPhoto img {
+    height: 280px;
+    width: 280px;
+    object-fit: cover
+}
+
+@media screen and (max-width:1060px) {
+    .profileMain {
+        width: 80%
+    }
+
+    .profileEdit,
+    .entityCounts {
+        width: 70%
+    }
+}
+
+@media screen and (max-width:930px) {
+    .profileMain {
+        width: 90%
+    }
+
+    .profileEdit,
+    .entityCounts {
+        width: 80%
+    }
+
+    .gallery {
+        padding-top: 32px;
+        column-gap: 20px;
+        row-gap: 25px
+    }
+
+    .postPhoto {
+        width: 100%;
+        height: 200px
+    }
+
+    .postPhoto img {
+        width: 240px;
+        height: 240px
+    }
+}
+
+@media screen and (max-width:800px) {
+
+    .profileEdit,
+    .entityCounts {
+        width: 90%
+    }
+
+    .gallery {
+        padding-top: 32px;
+        column-gap: 18px;
+        row-gap: 25px
+    }
+
+    .postPhoto {
+        width: 100%;
+        height: 200px
+    }
+
+    .postPhoto img {
+        width: 200px;
+        height: 200px
+    }
+}
+
+@media screen and (max-width:660px) {
+    nav .links{
+        width: 100%;
+        height: 60px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        border-top: 1px solid gray;
+        flex-direction: row-reverse;
+        background-color: #fff;
+    }
+    .profileMain {
+        width: 100%;
+        padding: 10px
+    }
+
+    .profileInfo {
+        flex-direction: column;
+        width: 90%
+    }
+
+    .profilePhoto {
+        flex-basis: 30%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+    .profilePhoto div {
+        height: 120px;
+        width: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+    .profileDetails {
+        margin-top: 32px;
+        flex-basis: 60%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-around
+    }
+
+    .profileEdit {
+        height: auto;
+        padding: 4px 0;
+        width: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between
+    }
+
+    .profileEdit h5 {
+        font-size: 24px
+    }
+
+    .profileEdit button {
+        margin-left: 52px
+    }
+
+    .entityCounts {
+        margin-top: 20px;
+        width: 80%
+    }
+
+    .gallery {
+        width: 100%;
+        display: flex;
+        flex-direction: column
+    }
+
+    .postPhoto {
+        width: 100%;
+        height: 280px
+    }
+
+    .postPhoto img {
+        width: 90%;
+        height: 280px;
+    }
+
+ 
+}
+
+.home {
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-top: 40px
+}
+
+.homePosts {
+    height: 100%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.homePost {
+    height: auto;
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    border: 1px solid rgb(189, 189, 189);
+    border-radius: 8px;
+    margin-bottom: 40px;
+    background-color: #fff
+}
+
+.publisherDetails {
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px 0 10px 20px;
+    border-bottom: 1px solid rgb(189, 189, 189);
+    position: relative
+}
+
+.publisherDetails img {
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+    align-self: center;
+    justify-self: flex-start
+}
+
+.publisherDetails strong {
+    margin-left: 20px
+}
+
+#deleteIcon {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    opacity: 60%
+}
+
+.postImg {
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.postImg img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    border-bottom: 1px solid rgb(189, 189, 189)
+}
+
+.postActions {
+    padding: 10px 0 10px 20px;
+    display: flex;
+    align-items: center
+}
+
+.likesCount {
+    padding: 5px 0 5px 20px
+}
+
+.postDetails {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding: 5px 0 5px 20px
+}
+
+.postBody {
+    display: flex
+}
+
+.postBody strong {
+    margin-right: 10px
+}
+
+.allComments {
+    height: auto;
+    margin-right: 20px;
+    max-height: 140px;
+    width: 100%;
+    overflow: scroll
+}
+
+.allComments::-webkit-scrollbar {
+    width: 0px
+}
+
+.makeComment {
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 20px
+}
+
+.makeComment input {
+    margin-top: 15px;
+    border: none;
+    background: none;
+    border-bottom: 1px solid #000000;
+    padding: 6px;
+    width: 100%
+}
+
+.makeComment input:focus {
+    outline: 0
+}
+
+.makeComment button {
+    border: none;
+    background: none;
+    color: #00a5ff;
+    cursor: pointer
+}
+
+body {
+    background-color: #f8f8f8
+}
+
+.createPostContainer {
+    height: 100vh;
+    min-height: 590px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #000000c5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 20
+}
+
+#closeModal {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    color: #fff;
+    font-size: 32px;
+    height: 36px;
+    width: 36px;
+    cursor: pointer
+}
+
+.createPost {
+    height: 70%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between
+}
+
+.postSelect {
+    height: 100%;
+    width: 50%;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid rgb(189, 189, 189);
+    border-radius: 10px;
+    position: relative;
+    background-color: #ebebeb
+}
+
+.postSelect .createPostTitle {
+    position: absolute;
+    height: auto;
+    width: 100%;
+    top: 0;
+    left: 0;
+    text-align: center;
+    font-size: 24px;
+    padding: 8px;
+    background-color: #00a5ff;
+    color: #fff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px
+}
+
+#discardCreatePost {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    cursor: pointer
+}
+
+.postSelect img {
+    margin-top: 80px;
+    height: 120px;
+    width: auto
+}
+
+.postSelect input {
+    display: none
+}
+
+.postSelect button {
+    height: 36px;
+    width: 180px;
+    background-color: #0387f3;
+    border-radius: 4px;
+    color: #fff;
+    border: none;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer
+}
+
+.postForm {
+    height: 75%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid rgb(189, 189, 189);
+    border-radius: 10px;
+    background-color: #ebebeb
+}
+
+.postFormTitle {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #00a5ff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-size: 24px;
+    color: #fff;
+    position: relative
+}
+
+.postFormDetails {
+    height: 90%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.photoPreview {
+    height: 100%;
+    flex-basis: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    background-color: #303030
+}
+
+.photoPreview img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain
+}
+
+.postCaption {
+    flex-basis: 45%;
+    margin-right: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    font-size: 24px
+}
+
+.postCaption input {
+    height: 36px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid gray;
+    padding: 10px;
+    background: none;
+    overflow: scroll;
+}
+
+.postCaption input:focus {
+    outline: none
+}
+
+.postCaption button {
+    height: 32px;
+    width: 90px;
+    border: none;
+    background-color: #0387f3;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer
+}
+
+@media screen and (max-width:720px) {
+    .postFormDetails {
+        flex-direction: column
+    }
+}
+
+@font-face {
+    font-family: grandHotel;
+    src: url(/font/Grand_Hotel/GrandHotel-Regular.ttf)
+}
+
+.user_navbar {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    background-color: #fff;
+    border-bottom: 1px solid rgb(194, 193, 193);
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10
+}
+
+.logo {
+    height: 100%;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.logo h1 {
+    font-size: 32px;
+    font-family: grandHotel;
+    font-weight: lighter
+}
+
+.links {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around
+}
+
+.preloadContainer {
+    height: auto;
+    width: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.spinner {
+    border-left: 3px solid rgb(20, 20, 20);
+    border-bottom: 2px solid rgb(20, 20, 20);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: rotate 2s infinite
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0)
+    }
+
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+.editProfile_wrapper {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding: 32px 10% 10%
+}
+
+.editProfile_wrapper h3 {
+    font-size: 24px
+}
+
+.editProfile {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin-top: 32px
+}
+
+.editField {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 20px
+}
+
+.editField label {
+    font-size: 18px;
+    font-weight: 700;
+    opacity: 80%
+}
+
+.image_editField {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 20px
+}
+
+.image_editField .profile_Photo {
+    height: 180px;
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start
+}
+
+.image_editField img {
+    height: 140px;
+    width: 140px;
+    object-fit: cover;
+    border-radius: 70px
+}
+
+.editProfile button {
+    border: none;
+    background-color: #0387f3;
+    padding: 8px 20px;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer
+}
+
+.text_editField {
+    height: auto;
+    width: 100%;
+    margin-top: 20px
+}
+
+.text_editField input {
+    height: auto;
+    width: 320px;
+    padding: 8px;
+    background: none;
+    border: 1px solid gray;
+    border-radius: 4px;
+    font-size: 16px
+}
+
+.text_editField textarea {
+    height: 80px;
+    width: 320px;
+    padding: 8px;
+    background: none;
+    border-radius: 4px
+}
+
+@media screen and (max-width:660px) {
+    .createPostContainer #closeModal{
+        display: none;
+    }
+    .createPost{
+        width: 100%;
+        height: 100vh;
+        padding: 0 10px 0 10px;
+    }
+    .postSelect .createPostTitle{
+        position: absolute;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+   
+    .postSelect{
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .postForm{
+        height: 100%;
+        width: 100%;
+        border-radius: 0;
+    }
+    .postForm .postFormDetails{
+        height: 100%;
+    }
+    .postForm .postFormTitle{
+        border-radius: 0;
+        height: 50px;
+    }
+    .photoPreview {
+        margin-top: 10px;
+        height: 300px;
+    }
+    .photoPreview img{
+        height: 300px;
+        width: auto;
+    }
+    .postCaption{
+        width: 90%;
+    }
+}
